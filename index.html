@@ -1,386 +1,99 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html b:css='false' b:defaultwidgetversion='2' b:js='true' b:layoutsVersion='3' b:render='true' b:responsive='true' b:templateUrl='https://scribdvpdf.blogspot.com' b:templateVersion='2.9' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'><b:attr name='xmlns' value=''/><b:attr name='xmlns:b' value=''/><b:attr name='xmlns:expr' value=''/><b:attr name='xmlns:data' value=''/><head>
-<b:include data='blog' name='JetAll-head-content'/>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>2048</title>
 
-<b:skin><![CDATA[
+  <link href="style/main.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
+  <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
+  <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-////////////// [!] Please her paste style script ///////////
-
----------------------------
-# Scribdvpdf v1.2 Style #
----------------------------
-
-
-]]></b:skin>
-<b:template-skin><![CDATA[
-
-]]></b:template-skin>
-  
-<b:defaultmarkups>
-<b:defaultmarkup type='Common'>
-<b:includable id='JetAll-head-content'>
-<meta expr:content='&quot;text/html; charset=&quot; + data:blog.encoding' http-equiv='Content-Type'/>
-<meta content='width=device-width,initial-scale=1' name='viewport'/>
-
-<!-- Primary Meta Tags -->
-<link expr:href='data:view.url.canonical' rel='canonical'/>
-<meta expr:content='data:view.url.canonical' property='og:url'/>
-<meta expr:content='data:blog.title + &quot; Team&quot;' name='author'/>
-<meta expr:content='data:blog.title' name='application-name'/>
-<meta expr:content='data:blog.adultContent ? &quot;adult&quot; : &quot;general&quot;' name='rating'/>
-      
-<!-- Favicon -->
-<b:if cond='data:skin.vars.favicon'>
-<b:with value='data:skin.vars.favicon' var='favicon'>
-<link expr:href='resizeImage(data:favicon,32,&quot;1:1&quot;)' rel='icon' sizes='32x32' type='image/png'/>
-<link expr:href='resizeImage(data:favicon,96,&quot;1:1&quot;)' rel='icon' sizes='96x96' type='image/png'/>
-<link expr:href='resizeImage(data:favicon,144,&quot;1:1&quot;)' rel='icon' sizes='144x144' type='image/png'/>
-<link expr:href='resizeImage(data:favicon,180,&quot;1:1&quot;)' rel='apple-touch-icon' type='image/png'/>
-<link expr:href='resizeImage(data:favicon,152,&quot;1:1&quot;)' rel='apple-touch-icon-precomposed' type='image/png'/>
-<meta expr:content='resizeImage(data:favicon,150,&quot;1:1&quot;)' name='msapplication-TileImage'/>
-</b:with>
-<b:else/>
-<link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
-</b:if>
-
-<!-- Theme Color -->
-<meta expr:content='data:skin.vars.body_background' name='theme-color'/>
-<meta expr:content='data:skin.vars.body_background' name='msapplication-TileColor'/>
-<meta expr:content='data:skin.vars.body_background' name='msapplication-navbutton-color'/>
-<meta expr:content='data:skin.vars.body_background' name='apple-mobile-web-app-status-bar-style'/>
-<meta content='yes' name='apple-mobile-web-app-capable'/>
-
-<!-- Title -->
-<b:with value='data:view.isHomepage ? data:blog.title + (data:skin.vars.tagline ? data:skin.vars.separator + data:skin.vars.tagline : &quot;&quot;) : data:view.isError ? &quot;404 (Error) Not Found&quot; + data:skin.vars.separator + data:blog.title : data:blog.pageName ? data:blog.pageName + data:skin.vars.separator + data:blog.title :  &quot;Latest Posts&quot; + data:skin.vars.separator + data:blog.title' var='meta_title'>
-<title><data:meta_title/></title>
-<meta expr:content='data:meta_title' name='title'/>
-<meta expr:content='data:meta_title' property='og:title'/>
-<meta expr:content='data:meta_title' name='twitter:title'/>
-</b:with>
-
-<!-- Image -->
-<b:with value='data:view.featuredImage ?: data:skin.vars.cover' var='meta_image'>
-<meta expr:content='data:meta_image' property='og:image'/>
-<meta expr:content='data:meta_image' name='twitter:image'/>
-</b:with>
-
-<!-- Description -->
-<b:with value='data:view.description ?: data:skin.vars.description' var='meta_desc'>
-<meta expr:content='data:meta_desc' name='description'/>
-<meta expr:content='data:meta_desc' property='og:description'/>
-<meta expr:content='data:meta_desc' name='twitter:description'/>
-</b:with>
-
-<!-- Open Graph / Facebook -->
-<meta content='' property='fb:app_id'/>
-<meta content='' property='article:author'/>
-<meta content='website' property='og:type'/>
-<meta expr:content='data:blog.locale' property='og:locale'/>
-<meta expr:content='data:blog.title' property='og:site_name'/>
-<meta expr:content='data:view.url.canonical' property='og:url'/>
-<meta expr:content='data:view.title' property='og:image:alt'/>
-
-<!-- Twitter -->
-<meta content='' name='twitter:site'/>
-<meta content='' name='twitter:creator'/>
-<meta content='summary_large_image' name='twitter:card'/>
-<meta expr:content='data:view.url.canonical' name='twitter:url'/>
-<meta expr:content='data:view.title' name='twitter:image:alt'/>
-
-<!-- Feed -->
-<data:blog.feedLinks/>
-
-<b:if cond='data:view.isHomepage'>
-<script type='application/ld+json'>{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;WebSite&quot;,&quot;url&quot;:&quot;<data:blog.canonicalHomepageUrl/>&quot;,&quot;name&quot;:&quot;<data:blog.title/>&quot;,&quot;potentialAction&quot;:{&quot;@type&quot;:&quot;SearchAction&quot;,&quot;target&quot;:&quot;<data:blog.canonicalHomepageUrl/>search?q={search_term_string}&amp;max-results=10&quot;,&quot;query-input&quot;:&quot;required name=search_term_string&quot;}}</script>
-</b:if>
-<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css' onload='if(media!=&quot;all&quot;)media=&quot;all&quot;' rel='stylesheet'/>
-</b:includable>
-</b:defaultmarkup>
-</b:defaultmarkups>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 <body>
+  <div class="container">
+    <div class="heading">
+      <h1 class="title">2048</h1>
+      <div class="scores-container">
+        <div class="score-container">0</div>
+        <div class="best-container">0</div>
+      </div>
+    </div>
 
-<header class='header-animate sticky-top navbar py-0 navbar-expand-lg' content='itemid' id='header' itemid='#header' itemscope='itemscope' itemtype='https://schema.org/WPHeader'>
-<input class='d-none' id='navbar-toggle' type='checkbox'/>
-<b:section class='container-xxl position-relative px-3 flex-nowrap' id='header-main' maxwidgets='3' showaddelement='no'>
-  <b:widget id='HTML10' locked='true' title='Logo' type='HTML' version='2' visible='true'>
-    <b:widget-settings>
-      <b:widget-setting name='content'>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSxlb73KpiLeNNZTws9SMgvdHGqQm0LQCEAP2SGB55D6iS6amBCZVXNCV-KkcvhtA9d3smkJ3EEI4OkmGfkSqgaR5TaA8-QVxSGhbkyelZNvZR9mcNSy9O1dLPrYQqTZPDijScOvdyOxTJb5Dcsqi3S5iYX393RzUjOhFrHKRuIUdPQUlued4IT7fHNcI/s16000/scribdbl.png</b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-        <b:include name='JetLogo'/>
-      </b:includable>
-  </b:widget>
-  <b:widget id='LinkList10' locked='true' title='Icons, Dark, Search' type='LinkList' version='2' visible='true'>
-    <b:widget-settings>
-      <b:widget-setting name='sorting'>NONE</b:widget-setting>
-      <b:widget-setting name='text-1'>instagram</b:widget-setting>
-      <b:widget-setting name='link-1'>#</b:widget-setting>
-      <b:widget-setting name='text-0'>facebook</b:widget-setting>
-      <b:widget-setting name='link-0'>#</b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-      <b:include name='JetSearch'/>
-    </b:includable>
-    <b:includable id='content'/>
-  </b:widget>
-  <b:widget id='LinkList11' locked='true' title='Menu' type='LinkList' version='2' visible='true'>
-    <b:widget-settings>
-      <b:widget-setting name='text-8'>Contact</b:widget-setting>
-      <b:widget-setting name='link-7'>/p/sitemap.html</b:widget-setting>
-      <b:widget-setting name='link-8'>/p/contact.html</b:widget-setting>
-      <b:widget-setting name='link-5'>#</b:widget-setting>
-      <b:widget-setting name='link-6'>#sub-end</b:widget-setting>
-      <b:widget-setting name='link-3'>#sub-start</b:widget-setting>
-      <b:widget-setting name='link-4'>#</b:widget-setting>
-      <b:widget-setting name='text-1'>About</b:widget-setting>
-      <b:widget-setting name='text-0'>Home</b:widget-setting>
-      <b:widget-setting name='text-3'>Sub Menu 1</b:widget-setting>
-      <b:widget-setting name='text-2'>Tech</b:widget-setting>
-      <b:widget-setting name='text-5'>DropDown</b:widget-setting>
-      <b:widget-setting name='text-4'>DropDown</b:widget-setting>
-      <b:widget-setting name='text-7'>Sitemap</b:widget-setting>
-      <b:widget-setting name='text-6'>Sub Menu 1</b:widget-setting>
-      <b:widget-setting name='sorting'>NONE</b:widget-setting>
-      <b:widget-setting name='link-1'>/p/about.html</b:widget-setting>
-      <b:widget-setting name='link-2'>/search/label/Tech?max-results=10</b:widget-setting>
-      <b:widget-setting name='link-0'>/</b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-      <b:include name='JetMenu'/>
-    </b:includable>
-    <b:includable id='content'/>
-  </b:widget>
-</b:section>
-</header>  
+    <div class="above-game">
+      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+      <a class="restart-button">New Game</a>
+    </div>
 
-  <b:if cond='data:blog.url == data:blog.homepageUrl'>
-
-  
-  <div class='info' id='Get-Started'> 
-  <div class='container-mdp'>
-    
-     <div class='hinfo'>
-    <h1>Find the Document for <span class='color-change' style='color: rgb(0, 0, 0);'><strong>free <svg class='bi bi-coin' fill='currentColor' height='47' viewBox='0 0 16 16' width='47' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z'/>
-  <path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/>
-  <path d='M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z'/>
-</svg>, </strong></span> <span class='color-change' style='color: rgb(0, 0, 0);'><strong>download it <svg class='bi bi-download' fill='currentColor' height='47' viewBox='0 0 16 16' width='47' xmlns='http://www.w3.org/2000/svg'><path d='M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z'/>
-  <path d='M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z'/>
-</svg>,</strong></span> and <span class='color-change' style='color: rgb(0, 0, 0);'><strong>read it </strong><svg class='bi bi-book' fill='currentColor' height='47' viewBox='0 0 16 16' width='47' xmlns='http://www.w3.org/2000/svg'><path d='M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z'/>
-</svg></span> right away. Do it together.</h1>
-
-    <input autocomplete='off' class='long-placeholder' id='scribdLink' placeholder='Document URL, eg: https://www.scribd.com/document/13953714/UI-Design' type='search' value=''/>
-
-        <button class='btnp' id='changeLink'>Get PDF</button>
-    <div id='errorMessage' style='color: red; display: none; text-align: center;'/>
-    
-    </div>
-     </div>
-    </div>
-  
-    <div id='iframeContainer'>
-      <div class='overlayDiv' id='overlayTop'>
-      <span id='pageTitle'/>
-      </div>
-      <iframe height='100%' id='scribdIframe' width='100%'/>
-      <div class='overlayDiv' id='overlayBottom'/>
-    </div>
-    
-  <div class='info2'>
-  <h2>Hassle-free way to access your favorite books and documents online. The best part? Everything.</h2>
-    <h3><span aria-hidden='true' class='glAQDp5 check-icon' style='width:24px;height:24px;fill:#7A7D85'><svg height='16' viewBox='0 0 16 16' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M8 1.75C4.54822 1.75 1.75 4.54822 1.75 8C1.75 11.4518 4.54822 14.25 8 14.25C11.4518 14.25 14.25 11.4518 14.25 8C14.25 4.54822 11.4518 1.75 8 1.75ZM0.25 8C0.25 3.71979 3.71979 0.25 8 0.25C12.2802 0.25 15.75 3.71979 15.75 8C15.75 12.2802 12.2802 15.75 8 15.75C3.71979 15.75 0.25 12.2802 0.25 8Z'/><path d='M11.5303 5.46967C11.8232 5.76256 11.8232 6.23744 11.5303 6.53033L7.53033 10.5303C7.23744 10.8232 6.76256 10.8232 6.46967 10.5303L4.46967 8.53033C4.17678 8.23744 4.17678 7.76256 4.46967 7.46967C4.76256 7.17678 5.23744 7.17678 5.53033 7.46967L7 8.93934L10.4697 5.46967C10.7626 5.17678 11.2374 5.17678 11.5303 5.46967Z'/></svg></span>Stay within your budget</h3>
-    <p class='tbop'>Discover a range of services, all tailored to fit your budget. No hidden fees or hourly rates, just straightforward And it&#39;s free.</p>
-    
-    <h3><span aria-hidden='true' class='glAQDp5 check-icon' style='width:24px;height:24px;fill:#7A7D85'><svg height='16' viewBox='0 0 16 16' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M8 1.75C4.54822 1.75 1.75 4.54822 1.75 8C1.75 11.4518 4.54822 14.25 8 14.25C11.4518 14.25 14.25 11.4518 14.25 8C14.25 4.54822 11.4518 1.75 8 1.75ZM0.25 8C0.25 3.71979 3.71979 0.25 8 0.25C12.2802 0.25 15.75 3.71979 15.75 8C15.75 12.2802 12.2802 15.75 8 15.75C3.71979 15.75 0.25 12.2802 0.25 8Z'/><path d='M11.5303 5.46967C11.8232 5.76256 11.8232 6.23744 11.5303 6.53033L7.53033 10.5303C7.23744 10.8232 6.76256 10.8232 6.46967 10.5303L4.46967 8.53033C4.17678 8.23744 4.17678 7.76256 4.46967 7.46967C4.76256 7.17678 5.23744 7.17678 5.53033 7.46967L7 8.93934L10.4697 5.46967C10.7626 5.17678 11.2374 5.17678 11.5303 5.46967Z'/></svg></span>Access high-quality content instantly</h3>
-    <p class='tbop'>Download your desired documents within minutes. Thanks to our vast collection, you&#39;ll always find what you&#39;re looking for.</p>
-    
-    <h3><span aria-hidden='true' class='glAQDp5 check-icon' style='width:24px;height:24px;fill:#7A7D85'><svg height='16' viewBox='0 0 16 16' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M8 1.75C4.54822 1.75 1.75 4.54822 1.75 8C1.75 11.4518 4.54822 14.25 8 14.25C11.4518 14.25 14.25 11.4518 14.25 8C14.25 4.54822 11.4518 1.75 8 1.75ZM0.25 8C0.25 3.71979 3.71979 0.25 8 0.25C12.2802 0.25 15.75 3.71979 15.75 8C15.75 12.2802 12.2802 15.75 8 15.75C3.71979 15.75 0.25 12.2802 0.25 8Z'/><path d='M11.5303 5.46967C11.8232 5.76256 11.8232 6.23744 11.5303 6.53033L7.53033 10.5303C7.23744 10.8232 6.76256 10.8232 6.46967 10.5303L4.46967 8.53033C4.17678 8.23744 4.17678 7.76256 4.46967 7.46967C4.76256 7.17678 5.23744 7.17678 5.53033 7.46967L7 8.93934L10.4697 5.46967C10.7626 5.17678 11.2374 5.17678 11.5303 5.46967Z'/></svg></span>No surprises, guaranteed</h3>
-    <p class='tbop'>With Scribd Download, you&#39;ll never be caught off guard. You&#39;ll never see a payment request, it&#39;s on the house.</p>
-    
-    <h3><span aria-hidden='true' class='glAQDp5 check-icon' style='width:24px;height:24px;fill:#7A7D85'><svg height='16' viewBox='0 0 16 16' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M8 1.75C4.54822 1.75 1.75 4.54822 1.75 8C1.75 11.4518 4.54822 14.25 8 14.25C11.4518 14.25 14.25 11.4518 14.25 8C14.25 4.54822 11.4518 1.75 8 1.75ZM0.25 8C0.25 3.71979 3.71979 0.25 8 0.25C12.2802 0.25 15.75 3.71979 15.75 8C15.75 12.2802 12.2802 15.75 8 15.75C3.71979 15.75 0.25 12.2802 0.25 8Z'/><path d='M11.5303 5.46967C11.8232 5.76256 11.8232 6.23744 11.5303 6.53033L7.53033 10.5303C7.23744 10.8232 6.76256 10.8232 6.46967 10.5303L4.46967 8.53033C4.17678 8.23744 4.17678 7.76256 4.46967 7.46967C4.76256 7.17678 5.23744 7.17678 5.53033 7.46967L7 8.93934L10.4697 5.46967C10.7626 5.17678 11.2374 5.17678 11.5303 5.46967Z'/></svg></span>Reliable support around the clock</h3>
-    <p class='tbop'>Our dedicated support team is available 24/7, ready to assist you whenever and wherever you need help.</p>
-  </div>
-  
-  <div class='accordion fs-5 fw-normal contr1' id='accordionPanelsStayOpenExample'>
-    
-    <h2 class='text-gray-800 text-center'>Frequently Asked Questions</h2>
-  <div class='accordion-item'>
-    <h2 class='accordion-header'>
-      <button aria-controls='collapseOne' aria-expanded='false' class='accordion-button collapsed' data-bs-target='#collapseOne' data-bs-toggle='collapse' type='button'>
-        What is a Scribd downloader?
-      </button>
-    </h2>
-    <div class='accordion-collapse collapse' data-bs-parent='#accordionExample' id='collapseOne'>
-      <div class='accordion-body'>
-       A Scribd downloader is a tool or service that allows users to download documents, books, and other content from the Scribd platform to their local devices for offline access.
-      </div>
-    </div>
-  </div>
-  <div class='accordion-item'>
-    <h2 class='accordion-header'>
-      <button aria-controls='collapseTwo' aria-expanded='false' class='accordion-button collapsed' data-bs-target='#collapseTwo' data-bs-toggle='collapse' type='button'>
-         Is using a Scribd downloader legal?
-      </button>
-    </h2>
-    <div class='accordion-collapse collapse' data-bs-parent='#accordionExample' id='collapseTwo'>
-      <div class='accordion-body'>
-        The legality of using a Scribd downloader can vary depending on local copyright laws and Scribd&#39;s terms of service. Some downloaders may infringe on copyright if used to download copyrighted content without permission. Users should always respect copyright laws.
-      </div>
-    </div>
-  </div>
-  <div class='accordion-item'>
-    <h2 class='accordion-header'>
-      <button aria-controls='collapseThree' aria-expanded='false' class='accordion-button collapsed' data-bs-target='#collapseThree' data-bs-toggle='collapse' type='button'>
-        Are there free Scribd downloaders available?
-      </button>
-    </h2>
-    <div class='accordion-collapse collapse' data-bs-parent='#accordionExample' id='collapseThree'>
-      <div class='accordion-body'>
-        Yes, there are both free and paid Scribd downloaders available. Some offer limited features for free, while others provide advanced options for a fee.
-      </div>
-    </div>
-  </div>
-    <div class='accordion-item'>
-    <h2 class='accordion-header'>
-      <button aria-controls='collapseFour' aria-expanded='false' class='accordion-button collapsed' data-bs-target='#collapseFour' data-bs-toggle='collapse' type='button'>
-        How do I use a Scribd downloader?
-      </button>
-    </h2>
-    <div class='accordion-collapse collapse' data-bs-parent='#accordionExample' id='collapseFour'>
-      <div class='accordion-body'>
-        Typically, you would need to copy and paste the URL of the Scribd document you want to download into the downloader tool or service. The downloader then fetches the document and allows you to save it to your device.
-      </div>
-    </div>
-  </div>
-    <div class='accordion-item'>
-    <h2 class='accordion-header'>
-      <button aria-controls='collapseFive' aria-expanded='false' class='accordion-button collapsed' data-bs-target='#collapseFive' data-bs-toggle='collapse' type='button'>
-         Can I download any document from Scribd?
-      </button>
-    </h2>
-    <div class='accordion-collapse collapse' data-bs-parent='#accordionExample' id='collapseFive'>
-      <div class='accordion-body'>
-        Not necessarily. Some documents on Scribd may have download restrictions set by the document&#39;s author or publisher, making them unavailable for download. It depends on the document&#39;s settings.
-      </div>
-    </div>
-  </div>
-    <div class='accordion-item'>
-    <h2 class='accordion-header'>
-      <button aria-controls='collapseSix' aria-expanded='false' class='accordion-button collapsed' data-bs-target='#collapseSix' data-bs-toggle='collapse' type='button'>
-        Are downloaded Scribd documents accessible offline?
-      </button>
-    </h2>
-    <div class='accordion-collapse collapse' data-bs-parent='#accordionExample' id='collapseSix'>
-      <div class='accordion-body'>
-        Yes, once you&#39;ve downloaded a document, you can access it offline on your device, as long as it&#39;s saved locally.
-      </div>
-    </div>
-  </div>
-    <div class='accordion-item'>
-    <h2 class='accordion-header'>
-      <button aria-controls='collapseSeven' aria-expanded='false' class='accordion-button collapsed' data-bs-target='#collapseSeven' data-bs-toggle='collapse' type='button'>
-        Are there risks associated with using Scribd downloaders?
-      </button>
-    </h2>
-    <div class='accordion-collapse collapse' data-bs-parent='#accordionExample' id='collapseSeven'>
-      <div class='accordion-body'>
-        There can be risks, including potential copyright infringement or the use of unreliable third-party tools. Users should be cautious and ensure they have the right to download content.
-      </div>
-    </div>
-  </div>
-    <div class='accordion-item'>
-    <h2 class='accordion-header'>
-      <button aria-controls='collapseEight' aria-expanded='false' class='accordion-button collapsed' data-bs-target='#collapseEight' data-bs-toggle='collapse' type='button'>
-         What happens if I encounter a document that can&#39;t be downloaded?
-      </button>
-    </h2>
-    <div class='accordion-collapse collapse' data-bs-parent='#accordionExample' id='collapseEight'>
-      <div class='accordion-body'>
-        If a document has download restrictions, you won&#39;t be able to download it using a Scribd downloader. In such cases, you may need to contact the document&#39;s author or publisher for access.
-      </div>
-    </div>
-  </div>
-</div>
-  
- 
-  </b:if>
-    
-
-<script>/*<![CDATA[*/
-///////////// JAVASCRIPT PASTE HER /////////////////////
-/*]]>*/</script>
-  
-
-  
-    
-  <section class='sect1'><div class='sect2'><h2>Start <strong style='opacity: 1;'>aligning</strong><br/> with Scribdvpdf</h2>
-    <a behavior='startup' expr:href='data:view.isHomepage ? &quot;#Get-Started&quot; : &quot;/#Get&quot;' expr:target='data:view.isHomepage ? &quot;&quot; : &quot;_blank&quot;' href='/' location='outro'>Get started for free</a></div></section>
-  
-  <div class='bg-black'>
-  <div class='container-lg bg-15 call'>
-  <footer class='py-4' itemid='#footer' itemscope='itemscope' itemtype='https://schema.org/WPFooter'>
-    <div class='row'>
-      <div class='col-md-5 mb-3'>
-       <a aria-current='page' class='' href='/'><img alt='Scribdvpdf logo' class='h-20' height='32' loading='lazy' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqz28yQUEUb4irEpxalWBZsQhQdgevTJ3JMj1X_6ci8CXOH_S4FVn0MR0JnNj0UK8LTH6DMVvPP7wbCTvc2dRdUHoR782fusJyCdLpHhyphenhyphent5wb-uKadX6BXTpQr3FeDSH0Yt8VjDmtESIzWWkd6xBC1RSVw_SiCYefxXFplGx5gxiH9BVRgP7aA21NAnGs/s16000/scribdlo.png' width='180'/></a><div class='text-white mb-3 mt-3'>Access high-quality content instantly, Download your desired documents within minutes. Thanks to our vast collection, you&#39;ll always find what you&#39;re looking for.</div>
-        <div class='text-white-50'>
-      <ul class='list-unstyled d-flex'>
-        <li class='me-3 py-2'><a aria-label='DoScribd on Twitter - opens in new tab' class='link-body-emphasis' href='/' rel='noopener' target='_blank'><svg class='bi bi-twitter-x' fill='currentColor' height='24' style='color: #ffffff' viewBox='0 0 16 16' width='24' xmlns='http://www.w3.org/2000/svg'>
-  <path d='M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z'/></svg></a></li>
-        
-        <li class='me-3 py-2'><a aria-label='DoScribd on Facebook - opens in new tab' class='link-body-emphasis' href='/' rel='noopener' target='_blank'><svg class='bi bi-facebook' fill='currentColor' height='24' style='color: #ffffff' viewBox='0 0 16 16' width='24' xmlns='http://www.w3.org/2000/svg'>
-  <path d='M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z'/></svg></a></li>
-        
-        <li class='me-3 py-2'><a aria-label='DoScribd on Github - opens in new tab' class='link-body-emphasis' href='#' rel='noopener' target='_blank'><svg class='bi bi-github' fill='currentColor' height='24' style='color: #ffffff' viewBox='0 0 16 16' width='24' xmlns='http://www.w3.org/2000/svg'>
-  <path d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z'/></svg></a></li>
-        
-        <li class='me-3 py-2'><a aria-label='DoScribd on Telegram - opens in new tab' class='link-body-emphasis' href='#' rel='noopener' target='_blank'><svg class='bi bi-telegram' fill='currentColor' height='24' style='color: #ffffff' viewBox='0 0 16 16' width='24' xmlns='http://www.w3.org/2000/svg'>
-  <path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z'/></svg></a></li>
-      </ul>
+    <div class="game-container">
+      <div class="game-message">
+        <p></p>
+        <div class="lower">
+	        <a class="keep-playing-button">Keep going</a>
+          <a class="retry-button">Try again</a>
         </div>
       </div>
 
-      <div class='col-6 col-md-2 mb-3 text-white'>
-        <h3>Discover</h3>
-        <ul class='nav nap flex-column'>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='/search/label/Blog'>Blog</a></li>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='/p/whats-new.html'>What&#39;s new</a></li>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='/p/partners.html'>Partners</a></li>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='/p/careers.html'>Careers</a></li>
-        </ul>
+      <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
       </div>
 
-      <div class='col-6 col-md-2 mb-3 text-white'>
-        <h3>Legal</h3>
-        <ul class='nav flex-column'>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='/p/privacy-policy.html'>Privacy Policy</a></li>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='/p/terms-of-use.html'>Terms of Use</a></li>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='/p/cookies-policy.html'>Cookie Use</a></li>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='/p/faqs.html'>FAQs</a></li>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='/p/donate.html'>Donate</a></li>
-        </ul>
-      </div>
+      <div class="tile-container">
 
-    <div class='col-6 col-md-2 mb-3 text-white'>
-        <h3>Support</h3>
-        <ul class='nav flex-column'>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='/p/contact.html'>Contact us</a></li>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='/p/about-us.html'>About us</a></li>
-          <li class='nav-item mb-2'><a class='nav-link p-0 text-white-50 hover-text-primary' href='#'>Help</a></li>
-          </ul>
       </div>
-      
     </div>
-<div class='d-flex flex-column flex-sm-row justify-content-between py-0 my-4 border-top'/>
-    <div class='col-md-4 d-flex mt-0 align-items-left'>
-      
-      
-      <p class='text-center text-light'>&#169; 2023 Scribdvpdf, Inc. All rights reserved.</p>
-    </div>
-  </footer>
-</div>
-    </div>
-  
-    <script crossorigin='anonymous' integrity='sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm' src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js'/>
+
+    <p class="game-explanation">
+      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+    </p>
+    <hr>
+    <p>
+    <strong class="important">Note:</strong> This site is the official version of 2048. You can play it on your phone via <a href="http://git.io/2048">http://git.io/2048.</a> All other apps or sites are derivatives or fakes, and should be used with caution.
+    </p>
+    <hr>
+    <p>
+    Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
+    </p>
+  </div>
+
+  <script src="js/bind_polyfill.js"></script>
+  <script src="js/classlist_polyfill.js"></script>
+  <script src="js/animframe_polyfill.js"></script>
+  <script src="js/keyboard_input_manager.js"></script>
+  <script src="js/html_actuator.js"></script>
+  <script src="js/grid.js"></script>
+  <script src="js/tile.js"></script>
+  <script src="js/local_storage_manager.js"></script>
+  <script src="js/game_manager.js"></script>
+  <script src="js/application.js"></script>
 </body>
 </html>
